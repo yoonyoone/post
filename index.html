@@ -38,12 +38,12 @@
             jibunAddress = data.jibunAddress 
           } 
           
-          var postData = { 
-            roadAddress : data.roadAddress, 
-            jibunAddress : jibunAddress, 
-            zonecode : data.zonecode }; 
+//           var postData = { 
+//             roadAddress : data.roadAddress, 
+//             jibunAddress : jibunAddress, 
+//             zonecode : data.zonecode }; 
           
-          window.Android.processData(postData); 
+          window.Android.processData(data.roadAddress, jibunAddress, data.zonecode); 
         }, 
         width : '100%', 
         height : '100%'
