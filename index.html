@@ -10,8 +10,19 @@
   <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script> 
   <script> 
     window.addEventListener("message", onReceivedPostMessage, false); 
-    function postMessageToiOS(postData) { 
-      window.webkit.messageHandlers.callBackHandler.postMessage(postData); 
+    function onReceivedPostMessage(event) {
+        //..ex deconstruct event into action & params
+        let action = event.data.action;
+        let params = event.data.params;
+        console.log("onReceivedPostMessage " + event);
+    }
+
+    function onReceivedActivityMessageViaJavascriptInterface(json) {
+        //..ex deconstruct data into action & params
+        let data = JSON.parse(json);
+        let action = data.action;
+        let params = data.params;
+        console.log("onReceivedActivityMessageViaJavascriptInterface " + event);
     }
     
     var element_layer = document.getElementById('layer'); 
@@ -32,7 +43,7 @@
             jibunAddress : jibunAddress, 
             zonecode : data.zonecode }; 
           
-          window.postMessageToiOS(postData); 
+          window.Android.processData(postData); 
         }, 
         width : '100%', 
         height : '100%'
